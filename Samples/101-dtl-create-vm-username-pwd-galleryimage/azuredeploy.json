@@ -63,11 +63,29 @@
         "description": "The password for the local account that will be created on the new vm."
       }
     }
+    "existingSubnetName": {
+      "type": "string",
+      "metadata": {
+        "description": "Existing Subnet Name."
+      }
+    },
+   "existingvnetID": {
+      "type": "string",
+      "metadata": {
+        "description": "Existing Subnet Name."
+      }
+    },
+   "existingvnetName": {
+      "type": "string",
+      "metadata": {
+        "description": "Existing Subnet Name."
+      }
+    }
   },
-  "variables": {
-    "labSubnetName": "[concat(variables('labVirtualNetworkName'), 'Subnet')]",
-    "labVirtualNetworkId": "[resourceId('Microsoft.DevTestLab/labs/virtualnetworks', parameters('existingLabName'), variables('labVirtualNetworkName'))]",
-    "labVirtualNetworkName": "[concat('Dtl', parameters('existingLabName'))]",
+    "variables": {
+    "labSubnetName": "[parameters('existingSubnetName')]",
+    "labVirtualNetworkId": "[parameters('existingvnetID')]",
+    "labVirtualNetworkName": "[parameters('existingvnetName')]",
     "resourceName": "[concat(parameters('existingLabName'), '/', parameters('newVMName'))]",
     "resourceType": "Microsoft.DevTestLab/labs/virtualMachines"
   },
